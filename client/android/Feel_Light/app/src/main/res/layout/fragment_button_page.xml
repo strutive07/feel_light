@@ -1,0 +1,235 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/back_ground_color_button_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.wonjuna.feel_light.MainActivity$PlaceholderFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/now_mode_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tmp_textView_now_mode"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="현재 모드 : "
+                android:textColor="@color/fbutton_color_concrete" />
+
+            <TextView
+                android:id="@+id/now_mode"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="무드등"
+                android:textColor="@color/fbutton_color_concrete" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mood_mode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/button_mode_mood"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal|center"
+                android:text="무드등 끄기"
+                android:textColor="@color/fbutton_color_concrete"
+                android:textSize="18sp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/FButton_on_off"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/buttonmood"
+                android:layout_alignStart="@+id/buttonmood"
+                android:layout_below="@+id/buttonmood"
+                android:layout_marginTop="27dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                fbutton:buttonColor="@color/Button_white_color"
+                fbutton:cornerRadius="5dp"
+
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mood_mode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/button_mode_mood"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal|center"
+                android:text="무드등 모드"
+                android:textColor="@color/fbutton_color_concrete"
+                android:textSize="18sp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/FButton_mood"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/buttonmood"
+                android:layout_alignStart="@+id/buttonmood"
+                android:layout_below="@+id/buttonmood"
+                android:layout_marginTop="27dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                fbutton:buttonColor="@color/Button_white_color"
+                fbutton:cornerRadius="5dp"
+
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/weather_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/button_mode_weather"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal|center"
+                android:text="날씨 모드"
+                android:textColor="@color/fbutton_color_concrete"
+                android:textSize="18sp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/FButton_weather"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/buttonmood"
+                android:layout_alignStart="@+id/buttonmood"
+                android:layout_below="@+id/buttonmood"
+                android:layout_marginTop="27dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                fbutton:buttonColor="@color/Button_white_color"
+                fbutton:cornerRadius="5dp"
+
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/temperature_mod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/button_mode_temperature"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal|center"
+                android:text="온도 모드"
+                android:textColor="@color/fbutton_color_concrete"
+                android:textSize="18sp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/FButton_temperature"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/buttonmood"
+                android:layout_alignStart="@+id/buttonmood"
+                android:layout_below="@+id/buttonmood"
+                android:layout_marginTop="27dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                fbutton:buttonColor="@color/Button_white_color"
+                fbutton:cornerRadius="5dp"
+
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mood_mod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/button_mode_dust"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal|center"
+                android:text="미세먼지 모드"
+                android:textColor="@color/fbutton_color_concrete"
+                android:textSize="18sp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/FButton_dust"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/buttonmood"
+                android:layout_alignStart="@+id/buttonmood"
+                android:layout_below="@+id/buttonmood"
+                android:layout_marginTop="27dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                fbutton:buttonColor="@color/Button_white_color"
+                fbutton:cornerRadius="5dp"
+
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

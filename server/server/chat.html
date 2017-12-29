@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Socket Test Client</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <style>
+        p {
+            width: 100px; /* 정렬하려는 요소의 넓이를 반드시 지정 */
+            margin: 0 auto;
+
+        }
+    </style>
+</head>
+<body>
+
+	<div id="demo_mode01">
+		<div class="card text-white bg-success mb-3" style="width : 20%;float:left" >
+	  <div class="card-header">맑음</div>
+	  <div class="card-body"align="center">
+
+          <p class="card-text"><center><input id="change_weather_to_sunny" type="button" value="맑음으로 바꾸기" class="btn btn-success"/></center></p>
+	  </div>
+	</div>
+	<div class="card text-white bg-secondary mb-3" style="width : 20%;float:left">
+	  <div class="card-header">흐림</div>
+	  <div class="card-body"align="center">
+<!--	    <h4 class="card-title">Secondary card title</h4>-->
+	    <p class="card-text">
+            <center>
+                <input id="change_weather_to_cloud" type="button" value="흐림으로 바꾸기" class="btn btn-secondary"/>
+            </center>
+            </p>
+	  </div>
+	</div>
+        <div class="card text-white bg-dark mb-3" style="width : 20%;float:left" >
+		  <div class="card-header">비</div>
+		  <div class="card-body">
+<!--		    <h4 class="card-title">Dark card title</h4>-->
+		    <p class="card-text">
+                <center>
+                    <input id="change_weather_to_rain" type="button" value="비로 바꾸기" class="btn btn-dark"/>
+                </center>
+                </p>
+		  </div>
+		</div>
+        <div class="card text-white bg-warning mb-3" style="width : 20%;float:left">
+		  <div class="card-header">번개</div>
+		  <div class="card-body">
+<!--		    <h4 class="card-title">Warning card title</h4>-->
+		    <p class="card-text">
+                <center>
+                    <input id="change_weather_to_thunder" type="button" value="번개로 바꾸기" class="btn btn-warning"/>
+                </center>
+                </p>
+		  </div>
+		</div>
+		<div class="card text-white bg-info mb-3" style="width : 20%">
+		  <div class="card-header">눈</div>
+		  <div class="card-body">
+
+		    <p class="card-text">
+                <center>
+                    <input id="change_weather_to_snow" type="button" value="눈으로 바꾸기" class="btn btn-info"/>
+                </center></p>
+		  </div>
+		</div>
+	<div class="card text-white bg-danger mb-3" style="width : 25%;float:left" >
+	  <div class="card-header">폭염</div>
+	  <div class="card-body">
+<!--	    <h4 class="card-title">Success card title</h4>-->
+	    <p class="card-text">
+            <center>
+
+
+                <input id="change_weather_to_hot" type="button" value="폭염으로 바꾸기" class="btn btn-danger"/>
+            </center>
+            </p>
+	  </div>
+	</div>
+	<div class="card text-white bg-primary mb-3" style="width : 25%;float:left">
+	  <div class="card-header">한파</div>
+	  <div class="card-body">
+<!--	    <h4 class="card-title">Danger card title</h4>-->
+	    <p class="card-text">
+            <center>
+                <input id="change_weather_to_cold" type="button" value="한파로 바꾸기" class="btn btn-primary"/>
+            </center>
+            </p>
+	  </div>
+	</div>
+
+		<div class="card bg-light mb-3" style="width : 25%;float:left">
+		  <div class="card-header">눈+번개</div>
+		  <div class="card-body">
+<!--		    <h4 class="card-title">Light card title</h4>-->
+		    <p class="card-text">
+                <center>
+                    <input id="change_weather_to_thunder_snow" type="button" value="눈 + 번개로  바꾸기" class="btn btn-light"/>
+                </center>
+                </p>
+		  </div>
+		</div>
+
+		<div class="card text-white bg-dark mb-3" style="width : 25%;" >
+		  <div class="card-header">비+번개</div>
+		  <div class="card-body">
+<!--		    <h4 class="card-title">Dark card title</h4>-->
+		    <p class="card-text">
+                <center>
+                    <input id="change_weather_to_thunder_rain" type="button" value="비 + 번개 바꾸기" class="btn btn-dark"/>
+                </center>
+                </p>
+		  </div>
+		</div>
+
+	</div>
+
+
+<p>
+	<div>
+
+	</div>
+</p>
+<span class="">
+	<div id="demo_mode02" class="container" style="margin-bottom : 5px">
+
+            <input class="form-control" type="text" id="change_dust_value_input" placeholder="미세먼지 값" style = "max-width: 30rem;float:left"/>
+
+
+			<input id="change_dust_value_button" class="btn btn-primary" type="button" value="미세먼지 값 바꾸기" style = "width: 12rem;"/>
+
+
+	</div>
+	<div id="demo_mode03" class="container">
+		<input class="form-control" type="text" id="change_temperature_input" placeholder="온도 값" style = "max-width: 30rem;float:left"/>
+		<input id="change_temperature_button" class="btn btn-primary" type="button" value="온도 값 바꾸기" style = "width: 12rem;"/>
+	</div>
+</span>
+
+	<div >
+
+	</div>
+
+<p>
+</p>
+<p>
+</p>
+<p id="demo_start_hoho">
+    <input id="start_demo" class="btn btn-primary" type="button" value="데모 모드 시작" style="margin : 5px"/>
+</p>
+<p id="end_button">
+    <input id="end_demo" class="btn btn-primary" type="button" value="데모 모드 끝" style="margin : 5px"/>
+</p>
+
+<div id="now_mode_weather" class="alert alert-primary" role="alert" >
+  모드 : 날씨 모드, 날씨 : 맑음
+</div>
+</body>
+<script>
+var userid;
+var username;
+var socket;
+$(function() {
+	connectToServer();
+	$('#demo_mode01').hide();
+	$('#demo_mode02').hide();
+	$('#demo_mode03').hide();
+    $('#now_mode_weather').hide();
+    $('#end_button').hide();
+});
+
+//데모모드 시작
+$('#start_demo').click(function(){
+  console.log('데모 모드 시작');
+	 $('#demo_start_hoho').hide();
+    $('#end_button').show();
+	$('#demo_mode01').show();
+	$('#demo_mode02').show();
+	$('#demo_mode03').show();
+    $('#now_mode_weather').show();
+  socket.emit('start_demo');
+});
+//데모 모드 끝
+$('#end_demo').click(function(){
+  console.log('데모 모드 시작');
+	$('#demo_start_hoho').show();
+    $('#end_button').hide();
+    $('#now_mode_weather').hide();
+	$('#demo_mode01').hide();
+	$('#demo_mode02').hide();
+	$('#demo_mode03').hide();
+  socket.emit('end_demo');
+});
+
+//날씨 변경
+$('#change_weather_to_sunny').click(function(){
+  console.log('맑음으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 맑음');
+  socket.emit('demo_now_weather_change', 8);
+});
+$('#change_weather_to_cloud').click(function(){
+  console.log('흐림으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 흐림');
+  socket.emit('demo_now_weather_change', 7);
+});
+$('#change_weather_to_hot').click(function(){
+  console.log('폭염으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 폭염');
+  socket.emit('demo_now_weather_change', 6);
+});
+$('#change_weather_to_cold').click(function(){
+  console.log('한파으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 한파');
+  socket.emit('demo_now_weather_change', 5);
+});
+$('#change_weather_to_thunder').click(function(){
+  console.log('번개으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 번개');
+  socket.emit('demo_now_weather_change', 4);
+});
+$('#change_weather_to_snow').click(function(){
+  console.log('눈으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 눈');
+  socket.emit('demo_now_weather_change', 3);
+});
+$('#change_weather_to_thunder_snow').click(function(){
+  console.log('눈+비로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 눈+비');
+  socket.emit('demo_now_weather_change', 2);
+});
+$('#change_weather_to_rain').click(function(){
+  console.log('비으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 비');
+  socket.emit('demo_now_weather_change', 1);
+});
+$('#change_weather_to_thunder_rain').click(function(){
+  console.log('비+번개으로 바꾸기');
+	$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 비+번개');
+  socket.emit('demo_now_weather_change', 0);
+});
+//미세먼지 변경
+$('#change_dust_value_button').click(function(){
+  console.log('미세먼지 값 바꾸기');
+	$('#now_mode_weather').text('모드 : 미세 먼지,  값 : ' + $('#change_dust_value_input').val() + '㎍/㎥');
+  socket.emit('demo_dust_value_change', $('#change_dust_value_input').val());
+});
+//기온 변경
+$('#change_temperature_button').click(function(){
+  console.log('온도 바꾸기');
+	$('#now_mode_weather').text('모드 :  온도,  값 : ' + $('#change_temperature_input').val() + '°C');
+  socket.emit('demo_temperature_change', $('#change_temperature_input').val());
+});
+
+
+function connectToServer() {
+		var url = 'http://52.79.41.31:3000';
+		var options = {'forceNew':true};
+
+		socket = io.connect(url, options);
+
+		socket.on('connect', function() {
+			console.log('웹소켓 서버에 연결되었습니다. : ' + url);
+			socket.emit('android_weathe_toServerr');
+		});
+		socket.on('init_demo_mode', function(tmp_json){
+			if(tmp_json.demo_now_mode == 0){
+				$('#now_mode_weather').text('모드 :  무드등');
+			}else if(tmp_json.demo_now_mode == 1){
+				if(tmp_json.demo_now_mode == 0){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 비+번개');
+				}else if(tmp_json.demo_now_mode == 1){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 비');
+				}else if(tmp_json.demo_now_mode == 2){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 눈+번개');
+				}else if(tmp_json.demo_now_mode == 3){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 눈');
+				}else if(tmp_json.demo_now_mode == 4){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 번개');
+				}else if(tmp_json.demo_now_mode == 5){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 폭염');
+				}else if(tmp_json.demo_now_mode == 6){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 한파');
+				}else if(tmp_json.demo_now_mode == 7){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 흐림');
+				}else if(tmp_json.demo_now_mode == 8){
+					$('#now_mode_weather').text('모드 : 날씨 모드, 날씨 : 맑음');
+				}
+
+			}else if(tmp_json.demo_now_mode == 2){
+				$('#now_mode_weather').text('모드 : 미세 먼지,  값 : ' + tmp_json.demo_dust_value + '㎍/㎥');
+			}else if(tmp_json.demo_now_mode == 3){
+				$('#now_mode_weather').text('모드 :  온도,  값 : ' + tmp_json.demo_temperature + '°C');
+			}
+			console.log(msg);
+		});
+
+		socket.on('disconnect', function() {
+				console.log('웹소켓 연결이 종료되었습니다.');
+		});
+}
+</script>
+
+</html>
